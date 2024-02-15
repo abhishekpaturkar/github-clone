@@ -1,0 +1,14 @@
+{
+  "name": "github-clone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev" : "nodemon backend/server.js",
+    "start" : "node backend/server.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
