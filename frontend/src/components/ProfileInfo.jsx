@@ -4,6 +4,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { TfiThought } from "react-icons/tfi";
 import { FaEye } from "react-icons/fa";
 import { formatMemberSince } from "../utils/functions";
+import LikeProfile from "./LikeProfile";
 
 const ProfileInfo = ({ userProfile }) => {
   // const userProfile = {
@@ -38,7 +39,7 @@ const ProfileInfo = ({ userProfile }) => {
           {/* View on Github */}
 
           <div className="flex gap-2 items-center flex-col">
-            {/* <LikeProfile userProfile={userProfile} /> */}
+            <LikeProfile userProfile={userProfile} />
             <a
               href={userProfile?.html_url}
               target="_blank"
