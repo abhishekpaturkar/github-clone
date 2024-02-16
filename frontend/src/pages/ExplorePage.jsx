@@ -2,25 +2,22 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import Spinner from "../components/Spinner";
 import Repos from "../components/Repos";
+
 const ExplorePage = () => {
   const [loading, setLoading] = useState(false);
   const [repos, setRepos] = useState([]);
   const [selectedLanguage, setSelectedLanguage] = useState("");
+
   const exploreRepos = async (language) => {
     setLoading(true);
     setRepos([]);
-
     try {
       const res = await fetch(
-        `https://api.github.com/search/repositories?q=language:${language}&sort=stars&order=desc&per_page=10`,
-        {
-          headers: {
-            authorization: `token ${import.meta.env.VITE_GITHUB_API_KEY}`,
-          },
-        }
+        "http://localhost:3000/api/explore/repos/" + language
       );
-      const data = await res.json();
-      setRepos(data.items);
+      const { repos } = await res.json();
+      setRepos(repos);
+
       setSelectedLanguage(language);
     } catch (error) {
       toast.error(error.message);
@@ -28,7 +25,6 @@ const ExplorePage = () => {
       setLoading(false);
     }
   };
-
   return (
     <div className="px-4">
       <div className="bg-glass max-w-2xl mx-auto rounded-md p-4">
@@ -38,7 +34,7 @@ const ExplorePage = () => {
         <div className="flex flex-wrap gap-2 my-2 justify-center">
           <img
             src="/javascript.svg"
-            alt="JavaScript"
+            alt="JavaScript ogo"
             className="h-11 sm:h-20 cursor-pointer"
             onClick={() => exploreRepos("javascript")}
           />
@@ -83,5 +79,4 @@ const ExplorePage = () => {
     </div>
   );
 };
-
 export default ExplorePage;
