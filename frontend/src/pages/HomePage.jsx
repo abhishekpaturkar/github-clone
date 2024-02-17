@@ -14,27 +14,24 @@ const HomePage = () => {
 
   const [sortType, setSortType] = useState("recent");
 
-  const getUserProfileAndRepos = useCallback(
-    async (username = "burakorkmez") => {
-      setLoading(true);
-      try {
-        const res = await fetch(`/api/users/profile/${username}`);
-        const { repos, userProfile } = await res.json();
+  const getUserProfileAndRepos = useCallback(async (username) => {
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/users/profile/${username}`);
+      const { repos, userProfile } = await res.json();
 
-        repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); //descending, recent first
+      repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); //descending, recent first
 
-        setRepos(repos);
-        setUserProfile(userProfile);
+      setRepos(repos);
+      setUserProfile(userProfile);
 
-        return { userProfile, repos };
-      } catch (error) {
-        toast.error(error.message);
-      } finally {
-        setLoading(false);
-      }
-    },
-    []
-  );
+      return { userProfile, repos };
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
     getUserProfileAndRepos();
