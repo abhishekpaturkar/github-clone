@@ -8,20 +8,24 @@ import SortRepos from "../components/SortRepos";
 import Spinner from "../components/Spinner";
 
 const HomePage = () => {
-  const [userProfile, setUserProfile] = useState(null);
+	const [userProfile, setUserProfile] = useState(null);
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
+
   const [sortType, setSortType] = useState("recent");
 
   const getUserProfileAndRepos = useCallback(
-    async (username = "abhishekpaturkar") => {
+    async (username = "burakorkmez") => {
       setLoading(true);
       try {
         const res = await fetch(`/api/users/profile/${username}`);
         const { repos, userProfile } = await res.json();
-        repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+        repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); //descending, recent first
+
         setRepos(repos);
         setUserProfile(userProfile);
+
         return { userProfile, repos };
       } catch (error) {
         toast.error(error.message);
@@ -38,9 +42,11 @@ const HomePage = () => {
 
   const onSearch = async (e, username) => {
     e.preventDefault();
+
     setLoading(true);
     setRepos([]);
     setUserProfile(null);
+
     const { userProfile, repos } = await getUserProfileAndRepos(username);
 
     setUserProfile(userProfile);
@@ -51,13 +57,12 @@ const HomePage = () => {
 
   const onSort = (sortType) => {
     if (sortType === "recent") {
-      repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); //descending, recent first
     } else if (sortType === "stars") {
-      repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
+      repos.sort((a, b) => b.stargazers_count - a.stargazers_count); //descending, most stars first
     } else if (sortType === "forks") {
-      repos.sort((a, b) => b.forks_count - a.forks_count);
+      repos.sort((a, b) => b.forks_count - a.forks_count); //descending, most forks first
     }
-
     setSortType(sortType);
     setRepos([...repos]);
   };
