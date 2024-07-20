@@ -109,5 +109,5 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 For any questions or support, contact:
 
-- Email: paturkarabhishek03@example.com
+- Email: paturkarabhishek03@gmail.com
 - GitHub: abhishekpaturkar
