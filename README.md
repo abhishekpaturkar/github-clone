@@ -28,11 +28,15 @@ A GitHub clone application built using the MERN stack (MongoDB, Express.js, Reac
 
 1. **Clone the Repository:**
 
+```
    git clone https://github.com/abhishekpaturkar/github-clone.git
+```
 
 2. **Navigate to the Project Directory:**
 
+```
    cd github-clone
+```
 
 3. **Setup Backend:**
 
@@ -50,12 +54,15 @@ Install backend dependencies:
 
 Create a `.env` file in the `root` directory with the following content:
 
+```
 GITHUB_API_KEY=""
 MONGO_URL=""
 PORT=3000
 GITHUB_CLIENT_ID=""
 GITHUB_CLIENT_SECRET=""
 CLIENT_BASE_URL=""
+
+```
 
 Start the backend server:
 
