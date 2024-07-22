@@ -12,7 +12,7 @@ const HomePage = () => {
   const [userProfile, setUserProfile] = useState(null)
   const [repos, setRepos] = useState([])
   const [loading, setLoading] = useState(false)
-  const { authUser } = useAuthContext()
+  const { authUser } = useAuthContext() // -> Issue
 
   const [sortType, setSortType] = useState("recent")
 

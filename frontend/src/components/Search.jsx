@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { IoSearch } from "react-icons/io5";
+import { useState } from "react"
+import { IoSearch } from "react-icons/io5"
 
 const Search = ({ onSearch }) => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("")
 
   return (
     <form
@@ -23,7 +23,7 @@ const Search = ({ onSearch }) => {
           type="search"
           id="default-search"
           className="block w-full p-4 ps-10 text-sm rounded-lg bg-glass focus:ring-blue-500 focus:border-blue-500 bg-transparent focus:bg-transparent "
-          placeholder="i.e. abhishekpaturkar"
+          placeholder="i.e. JoneDoe"
           required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -36,7 +36,7 @@ const Search = ({ onSearch }) => {
         </button>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default Search;
+export default Search
